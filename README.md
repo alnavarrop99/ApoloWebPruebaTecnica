@@ -160,7 +160,7 @@ El objetivo de esta prueba es evaluar tus habilidades como desarrollador Fronten
 ## Entrega
 
 - Comparte el enlace de tu repositorio en GitHub y, si aplicas, el enlace al despliegue de la aplicación.
-- Tienes hasta el día lunes para completar y enviar el proyecto.
+- Tienes hasta el día miercoles 20/11 para completar y enviar el proyecto.
 
 ---
 
