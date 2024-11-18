@@ -1,3 +1,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  button {
+    @apply btn
+  }
+  table {
+    @apply table table-zebra
+  }
+  a {
+    @apply link
+  }
+  progress {
+    @apply progress
+  }
+  select{
+    @apply select select-bordered
+  }
+  textarea{
+    @apply textarea textarea-bordered
+  }
+  input[type="checkbox"]{
+    @apply checkbox
+  }
+  input[type="radio"]{
+    @apply radio
+  }
+  input[type="range"]{
+    @apply range
+  }
+  input:not(:where([type="checkbox"], [type="radio"], [type="range"])){
+    @apply input input-bordered
+  }
+}
