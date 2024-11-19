@@ -26,3 +26,6 @@ const meta: Meta<typeof Icon> = {
 export default meta;
 
 export const Story: StoryObj<typeof meta> = { };
+export const WithButton: StoryObj<typeof meta> = {
+  render: (props) => <button onClick={() => window.dispatchEvent(new Event('onIconPlay' satisfies keyof WindowEventMap, { bubbles: true, cancelable: true }))}> <Icon {...props} /> button </button> 
+}

@@ -10,8 +10,10 @@ type TProps = {
 
 export const Icon = ({ name, trigger = 'click', delay = 0, className }: TProps & Pick<React.ComponentPropsWithRef<'span'>, 'className'>) => {    
   const [icons, setIcons] = useState<icons>({})
-  useSyncExternalStore(store.sub(setIcons), store.getStore)
   const playerRef = useRef<Player>(null);
+
+  useSyncExternalStore(getIconStore.sub(setIcons), getIconStore.get)
+  useSyncExternalStore(playIconStore.sub(playerRef), playIconStore.get)
 
   useEffect( () => {
     if(!playerRef.current || trigger !== 'always') return;
@@ -36,7 +38,7 @@ export const Icon = ({ name, trigger = 'click', delay = 0, className }: TProps &
 
 export default Icon
 
-export const list = ['sign-in', 'account', 'eye', 'filter', 'log-out', 'search', 'note', 'pizza', 'play', 'spiral', 'star' , 'heart'] as const
+export const list = ['sign-in', 'account', 'eye', 'filter', 'log-out', 'search', 'note', 'pizza', 'play', 'spiral', 'star' , 'heart', 'setting'] as const
 
 const getIcons = async () => {
   let res: icons  = {}
@@ -55,14 +57,35 @@ const getIcons = async () => {
 
 type module = Object
 type icons = Partial<Record<`${TProps['name']}.json`, module>>
-const store = {
-  sub: ( setIcons: React.Dispatch<React.SetStateAction<icons>> ) => (  ) => {
+const getIconStore = {
+  sub: ( setIcons: React.Dispatch<React.SetStateAction<icons>> ) => () => {
     getIcons().then( (data) => {
       setIcons(data)
     } )
     return () => {}
   }, 
-  getStore: () => undefined
+  get: () => undefined
 } as const
 
+const playIconStore = {
+  sub: (ref: React.RefObject<React.ComponentRef<typeof Player>>) => () => {
+    const handlePlay = () => ref.current?.playFromBeginning()
+    const controller = new AbortController()
+    window.addEventListener('onIconPlay', handlePlay, { signal: controller.signal })
+    return () => {
+      controller.abort()
+      window.removeEventListener('onIconPlay', handlePlay)
+    }
+
+  },
+  get: () => undefined
+} as const
+
+
 const styles = '[&>*]:!size-full w-8 aspect-square'
+
+declare global {
+  interface WindowEventMap {
+    'onIconPlay': () => void,
+  }
+}
