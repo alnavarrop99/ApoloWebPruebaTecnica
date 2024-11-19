@@ -96,6 +96,9 @@ importers:
       storybook:
         specifier: ^8.4.4
         version: 8.4.4(prettier@2.8.8)
+      storybook-addon-remix-react-router:
+        specifier: ^3.0.1
+        version: 3.0.1(@storybook/blocks@8.4.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.4.4(prettier@2.8.8)))(@storybook/channels@8.4.4(storybook@8.4.4(prettier@2.8.8)))(@storybook/components@8.4.4(storybook@8.4.4(prettier@2.8.8)))(@storybook/core-events@8.4.4(storybook@8.4.4(prettier@2.8.8)))(@storybook/manager-api@8.4.4(storybook@8.4.4(prettier@2.8.8)))(@storybook/preview-api@8.4.4(storybook@8.4.4(prettier@2.8.8)))(@storybook/theming@8.4.4(storybook@8.4.4(prettier@2.8.8)))(react-dom@18.3.1(react@18.3.1))(react-router-dom@6.28.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       tailwind-merge:
         specifier: ^2.5.4
         version: 2.5.4
@@ -673,8 +676,18 @@ packages:
       storybook: ^8.4.4
       vite: ^4.0.0 || ^5.0.0
 
+  '@storybook/channels@8.4.4':
+    resolution: {integrity: sha512-WlQsAHg7ZITtvX0nk8T/+VPooPssdRyxJeHTNIdRTFN/FK6BSRwv1fZeuEpV5q0WKgtR98xUAdIXn1zkTNXvDA==}
+    peerDependencies:
+      storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
+
   '@storybook/components@8.4.4':
     resolution: {integrity: sha512-0BSZVmsk23C0BSRKx3liZSVQFXtoF86XQFdNQxjrXIwdHIEN7TcL3DwcxeVUU5ilGp7HeDgAydGNIPGgTeEe6g==}
+    peerDependencies:
+      storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
+
+  '@storybook/core-events@8.4.4':
+    resolution: {integrity: sha512-pkwr0UU95WSJtn9Q7q5ip0x8WxerLf5z4CWonvymGu9Z0bZyMXeA+GOEt/YQIJgqI4fbTK8Jqi+suC6ibUu9oQ==}
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
 
@@ -1068,6 +1081,9 @@ packages:
   commander@4.1.1:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
     engines: {node: '>= 6'}
+
+  compare-versions@6.1.1:
+    resolution: {integrity: sha512-4hm4VPpIecmlg59CHXnRDnqGplJFrbLG4aFEl5vl6cK1u76ws3LLvX7ikFnTDl5vo39sjWD6AaDPYodJp/NNHg==}
 
   concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
@@ -1784,6 +1800,11 @@ packages:
     peerDependencies:
       react: ^18.3.1
 
+  react-inspector@6.0.2:
+    resolution: {integrity: sha512-x+b7LxhmHXjHoU/VrFAzw5iutsILRoYyDq97EDYdFpPLcvqtEzk4ZSZSQjnFPbr5T57tLXnHcqFYoN1pI6u8uQ==}
+    peerDependencies:
+      react: ^16.8.4 || ^17.0.0 || ^18.0.0
+
   react-is@17.0.2:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
 
@@ -1881,6 +1902,25 @@ packages:
   source-map@0.6.1:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
     engines: {node: '>=0.10.0'}
+
+  storybook-addon-remix-react-router@3.0.1:
+    resolution: {integrity: sha512-3tXvjDXFEZCfhGcoX6zdx6jRGH+QciDtSjmc0M8M4DlgEpwhflHwbS4J2NqaFmFTlsRXuh2+qjLfVzp4bkCixg==}
+    peerDependencies:
+      '@storybook/blocks': ^8.0.0
+      '@storybook/channels': ^8.0.0
+      '@storybook/components': ^8.0.0
+      '@storybook/core-events': ^8.0.0
+      '@storybook/manager-api': ^8.0.0
+      '@storybook/preview-api': ^8.0.0
+      '@storybook/theming': ^8.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-router-dom: ^6.4.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
 
   storybook@8.4.4:
     resolution: {integrity: sha512-xBOq3q/MuUUg3zM0imMMaK5ziKq3TO388jsnaiemJ4Uf0ZGwcHjM8HDBCDt0s5/CfsOQ49zo1ouZ3aNlu0qsUg==}
@@ -2645,7 +2685,15 @@ snapshots:
       ts-dedent: 2.2.0
       vite: 5.4.11(@types/node@22.9.0)
 
+  '@storybook/channels@8.4.4(storybook@8.4.4(prettier@2.8.8))':
+    dependencies:
+      storybook: 8.4.4(prettier@2.8.8)
+
   '@storybook/components@8.4.4(storybook@8.4.4(prettier@2.8.8))':
+    dependencies:
+      storybook: 8.4.4(prettier@2.8.8)
+
+  '@storybook/core-events@8.4.4(storybook@8.4.4(prettier@2.8.8))':
     dependencies:
       storybook: 8.4.4(prettier@2.8.8)
 
@@ -3112,6 +3160,8 @@ snapshots:
   color-name@1.1.4: {}
 
   commander@4.1.1: {}
+
+  compare-versions@6.1.1: {}
 
   concat-map@0.0.1: {}
 
@@ -3790,6 +3840,10 @@ snapshots:
       react: 18.3.1
       scheduler: 0.23.2
 
+  react-inspector@6.0.2(react@18.3.1):
+    dependencies:
+      react: 18.3.1
+
   react-is@17.0.2: {}
 
   react-refresh@0.14.2: {}
@@ -3899,6 +3953,22 @@ snapshots:
   source-map-js@1.2.1: {}
 
   source-map@0.6.1: {}
+
+  storybook-addon-remix-react-router@3.0.1(@storybook/blocks@8.4.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.4.4(prettier@2.8.8)))(@storybook/channels@8.4.4(storybook@8.4.4(prettier@2.8.8)))(@storybook/components@8.4.4(storybook@8.4.4(prettier@2.8.8)))(@storybook/core-events@8.4.4(storybook@8.4.4(prettier@2.8.8)))(@storybook/manager-api@8.4.4(storybook@8.4.4(prettier@2.8.8)))(@storybook/preview-api@8.4.4(storybook@8.4.4(prettier@2.8.8)))(@storybook/theming@8.4.4(storybook@8.4.4(prettier@2.8.8)))(react-dom@18.3.1(react@18.3.1))(react-router-dom@6.28.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1):
+    dependencies:
+      '@storybook/blocks': 8.4.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.4.4(prettier@2.8.8))
+      '@storybook/channels': 8.4.4(storybook@8.4.4(prettier@2.8.8))
+      '@storybook/components': 8.4.4(storybook@8.4.4(prettier@2.8.8))
+      '@storybook/core-events': 8.4.4(storybook@8.4.4(prettier@2.8.8))
+      '@storybook/manager-api': 8.4.4(storybook@8.4.4(prettier@2.8.8))
+      '@storybook/preview-api': 8.4.4(storybook@8.4.4(prettier@2.8.8))
+      '@storybook/theming': 8.4.4(storybook@8.4.4(prettier@2.8.8))
+      compare-versions: 6.1.1
+      react-inspector: 6.0.2(react@18.3.1)
+      react-router-dom: 6.28.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+    optionalDependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
 
   storybook@8.4.4(prettier@2.8.8):
     dependencies:
