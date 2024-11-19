@@ -6,11 +6,20 @@ const meta: Meta<typeof Icon> = {
   component: Icon,
   args: {
     name: 'sign-in',
+    trigger: 'click',
+    delay: 3
   },
   argTypes: {
     name: {
       control: 'inline-radio',
       options: list
+    },
+    trigger: {
+      control: 'inline-radio',
+      options: ['click', 'hover', 'always']
+    },
+    delay: {
+      control: 'number',
     }
   }
 }
