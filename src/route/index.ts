@@ -7,7 +7,7 @@ export enum PARSE {
   'app/list' = `list`,
 }
 
-export * as 'root' from './root'
+export * as 'root' from './root/route'
 export * as 'app' from './app'
 export * as 'login' from './login/route'
 export * as 'app/$id' from './app/$id/route'
