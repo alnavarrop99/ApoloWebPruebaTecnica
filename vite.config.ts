@@ -8,7 +8,6 @@ export default defineConfig({
   resolve: {
     alias: {
       '~': resolve(__dirname, 'src'),
-      '~/pub': resolve(__dirname, 'public')
     }
   },
   envPrefix: 'APOLO_',
