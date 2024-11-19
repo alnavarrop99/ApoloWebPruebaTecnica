@@ -11,5 +11,6 @@ export default defineConfig({
       '~/pub': resolve(__dirname, 'public')
     }
   },
+  envPrefix: 'APOLO_',
   plugins: [react()],
 })
