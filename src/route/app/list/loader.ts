@@ -1,8 +1,7 @@
-import { type LoaderFunctionArgs, type Params } from "react-router-dom";
+import type { LoaderFunctionArgs } from "react-router-dom";
 import * as db from '~/db'
 
-type TParams = Params<''>
-
-export const loader = async ({ }: { params: TParams } & LoaderFunctionArgs) => {
-  return ({})
+export const loader = async ({ }: LoaderFunctionArgs) => {
+  const res = db.list( { params: { category: 'character' }, query: {  } } )
+  return res
 }
