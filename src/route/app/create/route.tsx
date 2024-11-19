@@ -1,4 +1,6 @@
-export { action } from './action'
+import { action } from './action'
+
+export { action }
 
 export const Create = () => {
   return <>Create</>
