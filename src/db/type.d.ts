@@ -85,8 +85,9 @@ type API_Response<T extends API_Category, M extends 'GET' | 'ALL' = "GET"> = M e
     T extends 'episode' ? API_Episode : 
     unknown>
 
-type API_Params<T extends API_Category> =
+type API_Params<T extends API_Category> = Partial<
   T extends 'character' ? API_CategoryParams : 
   T extends 'location' ? API_LocationParams : 
   T extends 'episode' ? API_EpisodeParams : 
   unknown
+  >
