@@ -6,15 +6,6 @@ const meta: Meta<React.ComponentPropsWithRef<'a'>> = {
   args: { 
     children: 'link'
   },
-  argTypes: {
-    className: {
-      control: 'inline-check',
-      options: ['hover'],
-      mapping: {
-        'hover': 'link-hover'
-      }
-    }
-  }
 }
 export default meta;
 
