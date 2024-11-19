@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { reactRouterParameters, withRouter } from 'storybook-addon-remix-react-router'
 
 import Nav from './nav'
 import Footer from './footer'
@@ -13,7 +14,18 @@ export default meta;
 
 export const StoryNav: StoryObj<typeof Nav> = {
   name: 'Navigation',
-  render: Nav
+  render: Nav,
+  decorators: withRouter(),
+  parameters: {
+    reactRouter: reactRouterParameters({
+      location: {
+        path: '/'
+      },
+      routing: {
+        path: '/'
+      }
+    })
+  }
 };
 export const StoryFooter: StoryObj<typeof Footer> = {
   name: 'Footer', 

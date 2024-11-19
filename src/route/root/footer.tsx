@@ -1,7 +1,7 @@
 import { twMerge } from 'tailwind-merge'
 import { Icon } from '~/comp'
 
-export const Footer = ({ className }: Pick<React.ComponentPropsWithRef<'footer'>, 'className'>) => <footer className={twMerge('bg-gray-200 shadow-lg p-4 rounded-t-xl' , className)}>
+export const Footer = ({ className }: Pick<React.ComponentPropsWithRef<'footer'>, 'className'>) => <footer className={twMerge('bg-base-100 shadow-lg p-4 rounded-t-xl' , className)}>
   <ul className='flex gap-2 flex-col [&>li]:flex [&>li]:gap-1 [&>li]:place-items-center [&>li>:first-child]:w-6'>
     <li><img alt='rick and morty image' src={'/R&M.svg'} className='animate-bounce' /> <a href="https://rickandmortyapi.com" target='_blank'> Rick and Morty <b>API</b></a></li>
     <li><Icon name='play' trigger='always' delay={0.65} /> <a href="https://es.vitejs.dev" target='_blank'>  Make with <b>React & Vite</b></a></li>
