@@ -1,10 +1,11 @@
 export enum PARSE {
   'root' = '/',
+  'app' = '/app',
   'login' = `login`,
   'app/$id' = `:id`,
   'app/$id.edit' = `:id/edit`,
   'app/create' = `create`,
-  'app/list' = `list`,
+  'app/list' = ``,
 }
 
 export * as 'root' from './root/route'
