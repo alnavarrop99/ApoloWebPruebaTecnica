@@ -3,7 +3,7 @@ import GetById, { loader } from "./route";
 import { reactRouterParameters, withRouter } from 'storybook-addon-remix-react-router';
 
 const meta: Meta<typeof GetById> = {
-  title: 'Page/App/Character',
+  title: 'Page/App/Character/GetById',
   component: GetById,
   args: {},
   argTypes: {},

@@ -7,7 +7,7 @@ export { loader }
 export const GetById = () => {
   const data = useLoaderData() as Awaited<ReturnType<typeof loader>>
   return <main id={`${data.name}_${data.id}`} aria-label={`${data.name}`} className='[&_h1]:underline space-y-2'>
-    <div className="indicator">
+    <div className="indicator mx-auto block">
       <span className={clsx('indicator-item w-4 aspect-square rounded-full animate-pulse -right-1', {
         'bg-error': data.status === 'Dead',
         'bg-success': data.status === 'Alive',
@@ -24,7 +24,7 @@ export const GetById = () => {
     <div className='divider'></div>
     <h2>Info:</h2>
     <ul className='list-inside list-disc text-lg'>
-      { data.type && <li><span>Type:</span>{data.type}</li> }
+      { data.type && <li><span>Type:</span> {data.type}</li> }
       <li><span>Gender:</span> {data.gender}</li>
       <li><span>Status:</span> {data.status}</li>
       <li><span>Specie:</span> {data.species}</li>
