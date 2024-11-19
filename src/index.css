@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    @apply text-xs
+  }
   button {
     @apply btn
   }
@@ -10,7 +13,7 @@
     @apply table table-zebra
   }
   a {
-    @apply link
+    @apply link link-hover
   }
   progress {
     @apply progress
@@ -34,3 +37,5 @@
     @apply input input-bordered
   }
 }
+
+
