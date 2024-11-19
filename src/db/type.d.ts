@@ -71,18 +71,19 @@ interface API_EpisodeParams extends Pick<CharacterFilter, 'name'> extends API_Pa
   'episode': string,
 }
 
-type API_Response<T extends API_Category, M extends 'GET' | 'ALL' = "GET"> = {
+type API_Response<T extends API_Category, M extends 'GET' | 'ALL' = "GET"> = M extends 'ALL' ?
+  Readonly<{
   'info': API_Info<T>
-  'results': M extends 'ALL' ? Array< 
-    T extends 'character' ? API_Character : 
-    T extends 'location' ? API_Location : 
-    T extends 'episode' ? API_Episode : 
-    unknown> : Readonly<
+  'results': Array< 
     T extends 'character' ? API_Character : 
     T extends 'location' ? API_Location : 
     T extends 'episode' ? API_Episode : 
     unknown>
-}
+  }> : Readonly<
+    T extends 'character' ? API_Character : 
+    T extends 'location' ? API_Location : 
+    T extends 'episode' ? API_Episode : 
+    unknown>
 
 type API_Params<T extends API_Category> =
   T extends 'character' ? API_CategoryParams : 
