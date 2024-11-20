@@ -17,5 +17,6 @@ export default setupWorker( ...handler )
 declare global {
   interface Storage {
     db: Record<`${number}`, API_Response<'character', 'GET'>>
+    auth: Record<string, API_User>
   }
 }

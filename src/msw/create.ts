@@ -1,4 +1,4 @@
-import { http, HttpResponse } from "msw";
+import { delay, http, HttpResponse } from "msw";
 import * as db from "~/db";
 
 export const create = http.post<{}, Parameters<typeof db.create<'character'>>['0']['payload']>(
@@ -23,6 +23,8 @@ export const create = http.post<{}, Parameters<typeof db.create<'character'>>['0
       }
 
       localStorage.db = JSON.stringify(local) as unknown as typeof localStorage.db
+
+      await delay(1500)
       return HttpResponse.json({ ...data, mock: 'msw active' })
     } catch(err){
       return HttpResponse.error()

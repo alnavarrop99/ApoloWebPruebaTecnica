@@ -1,4 +1,4 @@
-import { getResponse, http, HttpMethods, HttpResponse } from "msw";
+import { delay, getResponse, http, HttpMethods, HttpResponse } from "msw";
 import * as db from "~/db";
 import { handler } from '.'
 
@@ -19,6 +19,8 @@ export const edit = http.patch<Record<keyof Parameters<typeof db.edit<'character
       data = local[`${+params.id}`] = Object.assign(local?.[`${+params.id}`] ?? data, req)
 
       localStorage.db = JSON.stringify(local) as unknown as typeof localStorage.db
+
+      await delay(1500)
       return HttpResponse.json({ ...data, mock: 'msw active' })
     } catch(err){
       return HttpResponse.error()
