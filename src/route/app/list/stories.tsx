@@ -11,7 +11,10 @@ const meta: Meta<typeof All> = {
   parameters: {
     reactRouter: reactRouterParameters({
       location: {
-        path: '/character',
+        path: '/character/',
+        searchParams: {
+          page: '1'
+        }
       },
       routing: {
         path: '/character',
