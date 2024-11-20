@@ -8,36 +8,48 @@
 
 // TODO: YET NOT WORK
 export const login = async ( { payload }: { payload: { email: string, password: string } } ) => {
-  const url = new URL(`${import.meta.env.APOLO_API_URL}/auth/login`)
+  try{
+    const url = new URL(`${import.meta.env.APOLO_API_URL}/auth/login`)
 
-  const req = new Request(url, {
-    method: 'POST',
-    body: JSON.stringify(payload)
-  })
-  const res = await fetch(req)
-  return res
+    const req = new Request(url, {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    })
+    const res = await fetch(req)
+    return res
+  } catch(err){
+    return { error: err as string } satisfies API_Error
+  }
 }
 
 // TODO: YET NOT WORK
 export const logout = async ( ) => {
-  const url = new URL(`${import.meta.env.APOLO_API_URL}/auth/logout`)
+  try{
+    const url = new URL(`${import.meta.env.APOLO_API_URL}/auth/logout`)
 
-  const req = new Request(url, {
-    method: 'POST',
-    body: JSON.stringify({})
-  })
-  const res = await fetch(req)
-  return res
+    const req = new Request(url, {
+      method: 'POST',
+      body: JSON.stringify({})
+    })
+    const res = await fetch(req)
+    return res
+  } catch(err){
+    return { error: err as string } satisfies API_Error
+  }
 }
 
 // TODO: YET NOT WORK
 export const sigin = async ( { payload }: { payload: { email: string, password: string } }  ) => {
-  const url = new URL(`${import.meta.env.APOLO_API_URL}/auth/sigin`)
+  try{
+    const url = new URL(`${import.meta.env.APOLO_API_URL}/auth/sigin`)
 
-  const req = new Request(url, {
-    method: 'POST',
-    body: JSON.stringify(payload)
-  })
-  const res = await fetch(req)
-  return res
+    const req = new Request(url, {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    })
+    const res = await fetch(req)
+    return res
+  } catch(err){
+    return { error: err as string } satisfies API_Error
+  }
 }

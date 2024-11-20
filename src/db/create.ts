@@ -4,13 +4,23 @@
  */
 
 // TODO: YET NOT WORK
-export const create = async <T extends API_Category> ( { params, payload }: { params: { category: T }, payload: {} } ): Promise<API_Response<T> | API_Error> => {
-  const url = new URL(`${import.meta.env.APOLO_API_URL}/${params.category}/` satisfies API_Url<typeof params.category>)
+export type TPayload<T> =
+T extends 'character' ? Omit<API_Response<'character'>, 'origin' | 'location'> :
+T extends 'location' ? Omit<API_Response<'location'>, 'residents'> : 
+T extends 'location' ? Omit<API_Response<'episode'>, 'characters'> : 
+unknown
 
-  const req = new Request(url, {
-    method: 'POST',
-    body: JSON.stringify(payload)
-  })
-  const res = await fetch(req)
-  return res as unknown as API_Response<T>
+export const create = async <T extends API_Category> ( { params, payload }: { params: { category: T }, payload: TPayload<T>  } ): Promise<API_Response<T> | API_Error> => {
+  try{
+    const url = new URL(`${import.meta.env.APOLO_API_URL}/${params.category}` satisfies API_Url<typeof params.category>)
+
+    const req = new Request(url, {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    })
+    const res = await fetch(req)
+    return res.json() 
+  } catch(err){
+    return { error: err as string } satisfies API_Error
+  }
 }

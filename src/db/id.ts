@@ -13,12 +13,17 @@
  * - GET https://rickandmortyapi.com/api/episode/[1,2,3]
  */
 
-export const id = async <T extends API_Category> ( { params }: { params: { category: T, id: number | Array<number> } } ): Promise<API_Response<T> | API_Error> => {
-  const url = new URL(`${import.meta.env.APOLO_API_URL}/${params.category}/${params.id}` satisfies API_Url<typeof params.category>)
+export const id = async <T extends API_Category> ( { params }: { params: { category: T, id: number | Array<number> | string } } ): Promise<API_Response<T> | API_Error> => {
+  try{
+    if( typeof params.id === 'string' && !JSON.parse(params.id) ) throw new Error('params not be a number | array')
+    const url = new URL(`${import.meta.env.APOLO_API_URL}/${params.category}` satisfies API_Url<typeof params.category> + `/${params.id}`)
 
-  const req = new Request(url, {
-    method: 'GET',
-  })
-  const res = await fetch(req)
-  return res.json()
+    const req = new Request(url, {
+      method: 'GET',
+    })
+    const res = await fetch(req)
+    return res.json()
+  } catch(err){
+    return { error: err as string } satisfies API_Error
+  }
 }

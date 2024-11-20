@@ -4,7 +4,7 @@
  */
 
 type API_Category = "character" | "location" | "episode"
-type API_Url<T extends API_Category = 'episode' | 'character' | 'location'> = `${ImportMetaEnv['APOLO_API_URL']}/${T}${string | unknown}`
+type API_Url<T extends API_Category = 'episode' | 'character' | 'location'> = `${ImportMetaEnv['APOLO_API_URL']}/${T}`
 
 type API_Info<T extends API_Category> = {
   "count": number,
@@ -72,18 +72,18 @@ interface API_EpisodeParams extends Pick<CharacterFilter, 'name'> extends API_Pa
 }
 
 type API_Response<T extends API_Category, M extends 'GET' | 'ALL' = "GET"> = M extends 'ALL' ?
-  Readonly<{
+  {
   'info': API_Info<T>
   'results': Array< 
     T extends 'character' ? API_Character : 
     T extends 'location' ? API_Location : 
     T extends 'episode' ? API_Episode : 
     unknown>
-  }> : Readonly<
+  } : 
     T extends 'character' ? API_Character : 
     T extends 'location' ? API_Location : 
     T extends 'episode' ? API_Episode : 
-    unknown>
+    unknown
 
 type API_Params<T extends API_Category> = Partial<
   T extends 'character' ? API_CategoryParams : 
