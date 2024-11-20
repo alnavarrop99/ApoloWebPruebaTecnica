@@ -5,6 +5,8 @@ import './index.css'
 import * as route from './route'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
+import setup from './msw'
+
 const sys_routes = createBrowserRouter([
   { id: 'root' satisfies keyof typeof route, path: route.PARSE['root'], Component: route['root'].default, children: [
     { id: 'login' satisfies keyof typeof route, path: route.PARSE['login'], Component: route['login'].default, action: route['login'].action },
@@ -17,8 +19,12 @@ const sys_routes = createBrowserRouter([
   ] },
 ])
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <RouterProvider router={sys_routes} future={{ v7_startTransition: true }} />
-  </StrictMode>,
-)
+setup.start().then( () => {
+  if(!localStorage?.db) localStorage.db = JSON.stringify({}) as unknown as typeof localStorage.db
+  createRoot(document.getElementById('root')!).render(
+    <StrictMode>
+      <RouterProvider router={sys_routes} future={{ v7_startTransition: true }} />
+    </StrictMode>,
+  )
+} )
+
