@@ -6,6 +6,9 @@ export { loader }
 
 export const GetById = () => {
   const data = useLoaderData() as Awaited<ReturnType<typeof loader>>
+
+  if('error' in data) return <>Error</>
+
   return <main id={`${data.name}_${data.id}`} aria-label={`${data.name}`} className='[&_h1]:underline space-y-2'>
     <div className="indicator mx-auto block">
       <span className={clsx('indicator-item w-4 aspect-square rounded-full animate-pulse -right-1', {
