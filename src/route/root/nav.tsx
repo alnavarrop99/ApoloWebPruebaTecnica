@@ -9,7 +9,7 @@ export const Nav = ({state, className}: React.ComponentPropsWithRef<'nav'> & { s
     </div>
     <div className="flex-none">
       <button className="btn-square glass no-animation" 
-        onClick={() => window.dispatchEvent(new Event('onIconPlay' satisfies keyof WindowEventMap))}
+        onClick={() => window.dispatchEvent(new Event('onIconPlay' satisfies keyof WindowEventMap, { bubbles: true }))}
       >
         <Icon name="setting" className="w-8" />
       </button>
