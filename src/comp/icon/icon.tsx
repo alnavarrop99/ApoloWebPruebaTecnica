@@ -70,11 +70,19 @@ const getIconStore = {
 const playIconStore = {
   sub: (ref: React.RefObject<React.ComponentRef<typeof Player>>) => () => {
     const handlePlay = () => ref.current?.playFromBeginning()
-    const controller = new AbortController()
-    window.addEventListener('onIconPlay', handlePlay, { signal: controller.signal })
+    const handlePlayOnce = () => ref.current?.play()
+
+    const play = new AbortController()
+    const play_once = new AbortController()
+
+    window.addEventListener('onIconPlay', handlePlay, { signal: play.signal })
+    window.addEventListener('onIconPlayOnce', handlePlayOnce, { signal: play_once.signal })
     return () => {
-      controller.abort()
+      play.abort()
+      play_once.abort()
+
       window.removeEventListener('onIconPlay', handlePlay)
+      window.removeEventListener('onIconPlay', handlePlayOnce)
     }
 
   },
@@ -87,5 +95,6 @@ const styles = '[&>*]:!size-full w-8 aspect-square'
 declare global {
   interface WindowEventMap {
     'onIconPlay': () => void,
+    'onIconPlayOnce': () => void,
   }
 }
