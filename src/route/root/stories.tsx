@@ -43,7 +43,7 @@ export const StoryMain: StoryObj<typeof Main> = {
 export const StoryPage: StoryObj<typeof Page> = { 
   name: 'Page',
   render: Page,
-  decorators: [withRouter, (Story) => <body className='container min-h-[100dvh] grid grid-rows-cols grid-rows-[min-content,1fr,min-content]'><Story /></body>],
+  decorators: [withRouter, (Story) => <body className='container min-h-[100dvh] grid grid-rows-cols grid-rows-[min-content,1fr,min-content] bg-base-100'><Story /></body>],
   parameters: {
     reactRouter: reactRouterParameters({
       location: {
