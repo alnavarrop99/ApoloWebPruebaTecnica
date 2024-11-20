@@ -7,7 +7,7 @@
  */
 
 // TODO: YET NOT WORK
-export const login = async ( { payload }: { payload: { email: string, password: string } } ) => {
+export const login = async ( { payload }: { payload: { username: string, password: string } } ): Promise<API_User | API_Error> => {
   try{
     const url = new URL(`${import.meta.env.APOLO_API_URL}/auth/login`)
 
@@ -16,14 +16,14 @@ export const login = async ( { payload }: { payload: { email: string, password: 
       body: JSON.stringify(payload)
     })
     const res = await fetch(req)
-    return res
+    return res.json()
   } catch(err){
     return { error: err as string } satisfies API_Error
   }
 }
 
 // TODO: YET NOT WORK
-export const logout = async ( ) => {
+export const logout = async ( ): Promise<{} | API_Error> => {
   try{
     const url = new URL(`${import.meta.env.APOLO_API_URL}/auth/logout`)
 
@@ -32,14 +32,14 @@ export const logout = async ( ) => {
       body: JSON.stringify({})
     })
     const res = await fetch(req)
-    return res
+    return res.json()
   } catch(err){
     return { error: err as string } satisfies API_Error
   }
 }
 
 // TODO: YET NOT WORK
-export const sigin = async ( { payload }: { payload: { email: string, password: string } }  ) => {
+export const sigin = async ( { payload }: { payload: { username: string, password: string } }  ): Promise<{} | API_Error> => {
   try{
     const url = new URL(`${import.meta.env.APOLO_API_URL}/auth/sigin`)
 
@@ -48,7 +48,7 @@ export const sigin = async ( { payload }: { payload: { email: string, password: 
       body: JSON.stringify(payload)
     })
     const res = await fetch(req)
-    return res
+    return res.json()
   } catch(err){
     return { error: err as string } satisfies API_Error
   }

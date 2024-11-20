@@ -8,7 +8,33 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      "animation": {
+        "flip-x": "flip-x 1s ease-out"
+      },
+      keyframes: {
+        "flip-x": {
+          "0%": {
+            "transform": "scaleX(1)"
+          },
+          "50%": {
+            "transform": "scaleX(-1)"
+          },
+          "100%": {
+            "transform": "scaleX(1)"
+          }
+}
+      },
+      transitionTimingFunction: {
+        'in-out-expo': 'cubic-bezier(0.94, 0.14, 0, 0.74)'
+      },
+      transitionDuration: {
+        '2000': '2000ms', 
+        '3000': '3000ms', 
+        '4000': '4000ms', 
+        '5000': '5000ms', 
+      },
+    },
   },
   plugins: [
     daisyui, 

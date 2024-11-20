@@ -95,3 +95,10 @@ type API_Params<T extends API_Category> = Partial<
 type API_Error = {
   'error': string
 }
+
+type API_User = {
+  id: number
+  access_token: string
+  username: string
+  password: string
+}

@@ -1,16 +1,22 @@
 export enum PARSE {
-  'root' = '/',
-  'app' = '/app',
-  'login' = `login`,
+  'root' = '',
+  'app' = 'app',
+  'auth' = `auth`,
+  'auth/login' = `login`,
+  'auth/logout' = `logout`,
+  'auth/sigin' = `sigin`,
   'app/$id' = `:id`,
-  'app/$id.edit' = `:id/edit`,
+  'app/$id.edit' = `edit`,
   'app/create' = `create`,
   'app/list' = ``,
 }
 
 export * as 'root' from './root/route'
 export * as 'app' from './app'
-export * as 'login' from './login/route'
+export * as 'auth' from './auth/route'
+export * as 'auth/login' from './auth/login'
+export * as 'auth/sigin' from './auth/sigin'
+export * as 'auth/logout' from './auth/logout'
 export * as 'app/$id' from './app/$id/route'
 export * as 'app/$id.edit' from './app/$id.edit/route'
 export * as 'app/create' from './app/create/route'

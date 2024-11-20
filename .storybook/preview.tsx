@@ -8,6 +8,7 @@ const preview: Preview = {
   decorators: [ (Story) => {
     const [loading, setLoading] = useState(true)
     if(!localStorage?.db) localStorage.db = JSON.stringify({}) as unknown as typeof localStorage.db
+    if(!localStorage?.auth) localStorage.auth = JSON.stringify({}) as unknown as typeof localStorage.db
     useEffect( () => { handleStart() }, [] )
 
     if(loading) return <Loading variant="infinity" />
