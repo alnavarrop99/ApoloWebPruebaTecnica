@@ -6,34 +6,34 @@
   :root {
     @apply text-xs
   }
-  button {
+  button:not(.headless) {
     @apply btn
   }
-  table {
+  table:not(.headless) {
     @apply table table-zebra
   }
-  a {
+  a:not(.headless) {
     @apply link link-hover
   }
-  progress {
+  progress:not(.headless) {
     @apply progress
   }
-  select{
+  select:not(.headless) {
     @apply select select-bordered
   }
-  textarea{
+  textarea:not(.headless) {
     @apply textarea textarea-bordered
   }
-  input[type="checkbox"]{
+  input[type="checkbox"]:not(.headless) {
     @apply checkbox
   }
-  input[type="radio"]{
+  input[type="radio"]:not(.headless) {
     @apply radio
   }
-  input[type="range"]{
+  input[type="range"]:not(.headless) {
     @apply range
   }
-  input:not(:where([type="checkbox"], [type="radio"], [type="range"])){
+  input:not(:where([type="checkbox"], [type="radio"], [type="range"], .headless)){
     @apply input input-bordered
   }
   h1 { @apply text-2xl font-bold }
