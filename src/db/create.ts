@@ -5,7 +5,7 @@
 
 // TODO: YET NOT WORK
 export type TPayload<T> =
-T extends 'character' ? Omit<API_Response<'character'>, 'origin' | 'location'> :
+T extends 'character' ? Omit<API_Response<'character'>, 'origin' | 'location' | 'episode' | 'created' | 'url' | 'id'> :
 T extends 'location' ? Omit<API_Response<'location'>, 'residents'> : 
 T extends 'location' ? Omit<API_Response<'episode'>, 'characters'> : 
 unknown
