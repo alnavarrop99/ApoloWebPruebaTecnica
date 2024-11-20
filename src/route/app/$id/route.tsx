@@ -1,4 +1,4 @@
-import { useLoaderData } from 'react-router-dom'
+import { Link, useLoaderData } from 'react-router-dom'
 import { loader } from './loader'
 import clsx from 'clsx'
 
@@ -9,7 +9,9 @@ export const GetById = () => {
 
   if('error' in data) return <>Error</>
 
-  return <main id={`${data.name}_${data.id}`} aria-label={`${data.name}`} className='[&_h1]:underline space-y-2'>
+  return <>
+    <header className='px-16 block ms-auto w-fit [&_a]:text-lg'><Link to={`./edit`} className='btn btn-outline h-16 aspect-square'> EDIT </Link></header>
+    <main id={`${data.name}_${data.id}`} aria-label={`${data.name}`} className='[&_h1]:underline space-y-2 place-self-center'>
     <div className="indicator mx-auto block">
       <span className={clsx('indicator-item w-4 aspect-square rounded-full animate-pulse -right-1', {
         'bg-error': data.status === 'Dead',
@@ -33,6 +35,7 @@ export const GetById = () => {
       <li><span>Specie:</span> {data.species}</li>
     </ul>
   </main>
+  </>
 }
 
 export default GetById
