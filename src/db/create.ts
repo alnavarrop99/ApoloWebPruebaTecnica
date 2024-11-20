@@ -4,7 +4,7 @@
  */
 
 // TODO: YET NOT WORK
-export const create = async <T extends API_Category> ( { params, payload }: { params: { category: T }, payload: {} } ): Promise<API_Response<T>> => {
+export const create = async <T extends API_Category> ( { params, payload }: { params: { category: T }, payload: {} } ): Promise<API_Response<T> | API_Error> => {
   const url = new URL(`${import.meta.env.APOLO_API_URL}/${params.category}/` satisfies API_Url<typeof params.category>)
 
   const req = new Request(url, {

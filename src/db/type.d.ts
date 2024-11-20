@@ -91,3 +91,7 @@ type API_Params<T extends API_Category> = Partial<
   T extends 'episode' ? API_EpisodeParams : 
   unknown
   >
+
+type API_Error = {
+  'error': string
+}
