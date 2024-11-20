@@ -31,7 +31,7 @@ export const EditById = () => {
           { K.GENDER.map( (data) => <option key={data}> {data} </option> ) }
         </select>
         <p>{data.gender}</p></label>
-      <button className='my-2 ms-auto block'>Submit</button>
+      <button className='my-2 ms-auto !block'>Submit</button>
     </Form>
   </main>
 }

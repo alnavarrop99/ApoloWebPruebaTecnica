@@ -19,24 +19,24 @@ export const Nav = ({state, className}: React.ComponentPropsWithRef<'nav'> & { s
             </Link>
           </li>
           <li>
-            <Link className="headless" to="/logout" replace
-              onMouseEnter={() => window.dispatchEvent(new Event('onIconPlay' satisfies keyof WindowEventMap, { bubbles: true }))} 
-            >
-              <Icon name="log-out" trigger="click" className="w-6" />Logut
-            </Link>
-          </li>
-          <li>
             <a href={import.meta.env.DEV ? 'http://localhost:6006/' : import.meta.env.APOLO_STORYBOOK_URL} target="_blank" 
               onMouseEnter={() => window.dispatchEvent(new Event('onIconPlay' satisfies keyof WindowEventMap, { bubbles: true }))}
             >
               <Icon name="note" className="w-6" trigger="click" />Go to sys design
             </a>
           </li>
+          <li>
+            <Link className="headless" to="/logout" replace
+              onMouseEnter={() => window.dispatchEvent(new Event('onIconPlay' satisfies keyof WindowEventMap, { bubbles: true }))} 
+            >
+              <Icon name="log-out" trigger="click" className="w-6" />Logut
+            </Link>
+          </li>
         </ul>
       </details>
     </div>
   </section>
-  { state !== 'idle' && <progress className="w-full bg-base-100" /> }
+  { state !== 'idle' && <progress className="w-full bg-base-100 !progress-success" /> }
 </nav>
 
 export default Nav

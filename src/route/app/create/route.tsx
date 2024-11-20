@@ -37,7 +37,7 @@ export const Create = () => {
         </select>
         <p>{sub.data && 'error' in sub.data && 'stack' in sub.data && sub.data.stack.gender}</p>
       </label>
-      <button className='my-2 ms-auto block'>Submit</button>
+      <button className='my-2 ms-auto !block'>Submit</button>
     </sub.Form>
   </main>
 }

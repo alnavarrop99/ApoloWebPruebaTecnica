@@ -62,7 +62,7 @@ export const List = () => {
   </ul>
 
   return <main aria-label='character list' className='space-y-1' onWheel={useCallback(onWheel, [state])}>
-    <nav className='px-1 sticky top-1 z-50'>
+    <nav className='px-1 fixed top-32 right-6 w-11/12 z-50'>
       <label className='p-0 pl-4 group input flex place-items-center gap-4 trasition-all duration-500 bg-inherit focus-within:bg-gray-100 focus-within:input-bordered' >
           <div className='trasition-all duration-1000 opacity-0 group-focus-within:opacity-100 w-full'><input type='text' className='headless' onKeyUp={onInput} /></div>
           <button className='shadow-lg'><Icon name='search' /></button>
