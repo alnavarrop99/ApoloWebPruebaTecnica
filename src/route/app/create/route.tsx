@@ -9,7 +9,7 @@ export const Create = () => {
   return <main aria-label='create character' className='px-8'>
     <h1>Create character:</h1>
     <div className='divider' />
-    <sub.Form className='[&_label]:form-control [&_label>:first-child]:label [&_label>:last-child]:label-alt [&_label>:last-child]:text-end [&_label>:last-child]:text-error [&_label>:last-child]:min-h-4' method='post'>
+    <sub.Form className='[&_label]:form-control [&_label>:first-child]:label [&_label>:first-child]:after:content-["*"] [&_label>:first-child]:justify-start [&_label>:first-child]:after:text-error [&_label>:last-child]:label-alt [&_label>:last-child]:text-end [&_label>:last-child]:text-error [&_label>:last-child]:min-h-4' method='post'>
       <label><p>Name:</p>
         <input type='text' name={'name' satisfies keyof TReq} />
         <p>{sub.data && 'error' in sub.data && 'stack' in sub.data && sub.data.stack.name}</p>
