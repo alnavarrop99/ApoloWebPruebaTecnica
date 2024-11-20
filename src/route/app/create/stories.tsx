@@ -3,7 +3,7 @@ import Create, { action } from "./route";
 import { reactRouterParameters, withRouter } from 'storybook-addon-remix-react-router';
 
 const meta: Meta<typeof Create> = {
-  title: 'Page/App/Character/Create',
+  title: 'Page/App/Create',
   component: Create,
   args: {},
   argTypes: {},

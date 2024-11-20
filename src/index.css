@@ -4,7 +4,6 @@
 
 @layer base {
   :root {
-    @apply text-xs
   }
   button:not(.headless) {
     @apply btn
@@ -36,10 +35,10 @@
   input:not(:where([type="checkbox"], [type="radio"], [type="range"], .headless)){
     @apply input input-bordered
   }
-  h1 { @apply text-2xl font-bold }
-  h2 { @apply text-lg font-bold }
-  h3 { @apply text-base }
-  h4 { @apply text-sm font-bold }
+  h1 { @apply text-3xl font-bold }
+  h2 { @apply text-2xl font-bold }
+  h3 { @apply text-xl }
+  h4 { @apply text-base font-bold }
 }
 
 

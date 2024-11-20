@@ -4,7 +4,7 @@ import { reactRouterParameters, withRouter } from 'storybook-addon-remix-react-r
 import Main from '~/route/root/main';
 
 const meta: Meta<typeof GetById> = {
-  title: 'Page/App/Character/Get',
+  title: 'Page/App/Get',
   component: GetById,
   args: {},
   argTypes: {},

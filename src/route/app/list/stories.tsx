@@ -3,7 +3,7 @@ import All, { loader } from "./route";
 import { reactRouterParameters, withRouter } from 'storybook-addon-remix-react-router';
 
 const meta: Meta<typeof All> = {
-  title: 'Page/App/Character/All',
+  title: 'Page/App/All',
   component: All,
   args: {},
   argTypes: {},

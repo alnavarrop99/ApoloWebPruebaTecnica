@@ -3,7 +3,7 @@ import EditById, { loader, action } from "./route";
 import { reactRouterParameters, withRouter } from 'storybook-addon-remix-react-router';
 
 const meta: Meta<typeof EditById> = {
-  title: 'Page/App/Character/Edit',
+  title: 'Page/App/Edit',
   component: EditById,
   args: {},
   argTypes: {},
