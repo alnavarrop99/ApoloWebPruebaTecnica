@@ -1,9 +1,6 @@
-import { type LoaderFunctionArgs, type Params, json } from "react-router-dom";
-import * as db from '~/db'
+import { type LoaderFunctionArgs } from "react-router-dom";
 
-type TParams = Params<'id'>
-
-export const loader = async ({ params }: { params: TParams } & LoaderFunctionArgs) => {
+export const loader = async ({ params }: LoaderFunctionArgs) => {
   let id = params.id
   if(!id) throw new Error('id not available')
 
