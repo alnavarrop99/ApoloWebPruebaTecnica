@@ -1,25 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import GetById, { loader } from "./route";
+import Create, { action } from "./route";
 import { reactRouterParameters, withRouter } from 'storybook-addon-remix-react-router';
 
-const meta: Meta<typeof GetById> = {
-  title: 'Page/App/Character/Get',
-  component: GetById,
+const meta: Meta<typeof Create> = {
+  title: 'Page/App/Character/Create',
+  component: Create,
   args: {},
   argTypes: {},
   decorators: [withRouter],
   parameters: {
     reactRouter: reactRouterParameters({
       location: {
-        path: '/3',
-        pathParams: {
-          'id': 3
-        }
+        path: '/app/create',
       },
-      routing: {
-        path: ':id',
-        loader
-      }
+      routing: { path: '/app/create', action, }
     })
   }
 }

@@ -14,7 +14,7 @@ export const EditById = () => {
   return <main aria-label='edit character' className='px-8'>
     <h1>Edit character:</h1>
     <div className='divider' />
-    <Form className='[&_label]:form-control [&_label>:first-child]:label [&_label>:last-child]:label-alt [&_label>:last-child]:text-end [&_label>:last-child]:opacity-50' method='patch'>
+    <Form className='[&_label]:form-control [&_label>:first-child]:label [&_label>:last-child]:label-alt [&_label>:last-child]:text-end [&_label>:last-child]:opacity-50 [&_label>:last-child]:min-h-4' method='patch'>
       <label><p>Name:</p><input type='text' name={'name' satisfies keyof TReq} /><p>{data.name}</p></label>
       <label><p>Specie:</p><input type='text' name={'species' satisfies keyof TReq} /><p>{data.species}</p></label>
       <label><p>Type:</p><input type='text' name={'type' satisfies keyof TReq} /><p>{data.type}</p></label>
