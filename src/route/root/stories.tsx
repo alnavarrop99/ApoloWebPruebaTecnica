@@ -6,6 +6,7 @@ import Footer from './footer'
 import Main from './main'
 import Page from './route'
 import { twMerge } from 'tailwind-merge';
+import { Navigation } from 'react-router-dom';
 
 const Artboard = ({ className }: Pick<React.ComponentPropsWithRef<'div'>, 'className'>) => <div className={twMerge('artboard phone-1 artboard-demo !w-full !h-[100dvh]', className)}>320×568</div>
 
@@ -18,6 +19,15 @@ export default meta;
 export const StoryNav: StoryObj<typeof Nav> = {
   name: 'Navigation',
   render: Nav,
+  args: {
+    state: 'idle'
+  },
+  argTypes: { 
+    state: {
+      control: 'inline-radio',
+      options: ['idle', 'loading', 'submitting'] satisfies Array<Navigation['state']>
+    }
+  },
   decorators: withRouter(),
   parameters: {
     reactRouter: reactRouterParameters({
@@ -47,7 +57,8 @@ export const StoryPage: StoryObj<typeof Page> = {
   parameters: {
     reactRouter: reactRouterParameters({
       location: {
-        path: '/nav'
+        path: '/nav',
+        state: 'idle'
       },
       routing: {
         path: '/',
