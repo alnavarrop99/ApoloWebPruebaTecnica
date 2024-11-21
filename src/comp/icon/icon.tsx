@@ -38,7 +38,7 @@ export const Icon = ({ name, trigger = 'click', delay = 0, className }: TProps &
 
 export default Icon
 
-export const list = ['sign-in', 'account', 'eye', 'filter', 'log-out', 'search', 'note', 'pizza', 'play', 'spiral', 'star' , 'heart', 'setting', 'add'] as const
+export const list = ['sign-in', 'account', 'eye', 'filter', 'log-out', 'search', 'note', 'pizza', 'play', 'spiral', 'star' , 'heart', 'setting', 'add', 'arrow-up', 'home'] as const
 
 const getIcons = async () => {
   let res: icons  = {}
