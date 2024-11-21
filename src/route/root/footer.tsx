@@ -14,9 +14,9 @@ export const Footer = ({ className }: Pick<React.ComponentPropsWithRef<'footer'>
 
 export const PrivateFooter = ({ className }: Pick<React.ComponentPropsWithRef<'div'>, 'className'>) => {
   const nav = useNavigate()
-  return <nav className={twMerge("join [&_button]:min-h-16 [&_button]:w-1/3 w-full sticky bottom-1 z-30", className)}>
+  return <nav className={twMerge("join [&_button]:min-h-16 [&_button]:w-1/3 w-full sticky bottom-0 z-30", className)}>
     <button className='join-item' onClick={() => {window.dispatchEvent(new Event('onIconPlay' satisfies keyof WindowEventMap, { bubbles: true })); nav(-1)} }> <Icon name='arrow-up' className='-rotate-90' /> </button>
     <button className='join-item' onClick={() => {window.dispatchEvent(new Event('onIconPlay' satisfies keyof WindowEventMap, { bubbles: true })); nav('/') }}> <Icon name='home' /> </button>
-    <button className='join-item' onClick={() => {window.dispatchEvent(new Event('onIconPlay' satisfies keyof WindowEventMap, { bubbles: true })); nav(-1) }}> <Icon name='arrow-up' className='rotate-90' /> </button>
+    <button className='join-item' onClick={() => {window.dispatchEvent(new Event('onIconPlay' satisfies keyof WindowEventMap, { bubbles: true })); nav(+1) }}> <Icon name='arrow-up' className='rotate-90' /> </button>
   </nav>
 }

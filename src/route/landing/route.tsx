@@ -1,5 +1,4 @@
 import { Link, useLoaderData } from "react-router-dom"
-import { PARSE } from "~/route"
 import { loader } from "./loader";
 import clsx from "clsx";
 
@@ -19,7 +18,7 @@ export const Landing = () => {
           <p className="py-6">
             This is my little project with <span className="badge badge-info">Rick and Morty API</span>. I expect all be <b>OK</b>, for home. Enjoy this project and greeting from here. 
           </p>
-          <Link to={`/${PARSE['app']}`} className="btn btn-success">Get started</Link>
+          <Link to={`/app`} className="btn btn-success">Get started</Link>
         </div>
       </div>
     </section>
@@ -36,7 +35,7 @@ export const Landing = () => {
           </p>
           <div className="flex justify-between items-center">
             <p className="underline font-bold">Are you sigin?</p>
-            <Link to={`/${PARSE['app']}`} className="btn btn-outline">Login now</Link>
+            <Link to={`/auth`} className="btn btn-outline">Login now</Link>
           </div>
         </div>
       </div>
@@ -71,7 +70,7 @@ export const Landing = () => {
         <h1 className="card-title text-white w-fit ms-auto">... Awesome styles</h1>
         <p>All system was make with awesome tools: <span className="badge badge-ghost">storybook</span> <span className="badge badge-info">tailwindcss</span> <span className="badge badge-success">lordicons</span> and <span className="badge badge-secondary">daisyUI</span> </p>
         <div className="card-actions justify-start">
-          <Link to={`/${PARSE['app']}`} className="btn">Sigin now</Link>
+          <Link to={`/auth`} className="btn">Sigin now</Link>
         </div>
       </div>
     </div>

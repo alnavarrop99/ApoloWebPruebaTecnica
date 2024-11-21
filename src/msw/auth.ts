@@ -2,7 +2,7 @@ import { delay, http, HttpResponse } from "msw";
 import * as db from "~/db";
 
 export const current = http.get<{}>(
-  `${import.meta.env.APOLO_API_URL}/auth/login`, async ({ request }) => {
+  `${import.meta.env.APOLO_API_URL}/auth/current`, async ({ request }) => {
     try {
       const localAuth = JSON.parse(localStorage.auth as unknown as string) as typeof localStorage.auth
       const access_token = request.headers.get('Authorization') as `Bearer ${string}`
@@ -66,7 +66,7 @@ export const sigin = http.post<{}, Parameters<typeof db['sigin']>['0']['payload'
       const local = JSON.parse(localStorage.auth as unknown as string) as typeof localStorage.auth
       const req = await request.json()
 
-      const index = +(Object.keys(local).sort( (a, b) => (+a - +b) ).at(-1) || '1')
+      const index = +(Object.keys(local).sort( (a, b) => (+a - +b) ).at(-1) || '0')
       local[req.username] = {
         ...req,
         id: index + 1,

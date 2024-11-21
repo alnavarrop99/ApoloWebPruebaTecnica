@@ -1,6 +1,5 @@
 import { redirect, type ActionFunctionArgs } from "react-router-dom";
 import * as db from "~/db";
-import { PARSE } from "~/route";
 
 export type TReq = Parameters<typeof db.login>['0']['payload']
 
@@ -29,7 +28,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     if('error' in res) return res
 
     localStorage['aplo_web-access_token'] = res.access_token
-    return redirect(`/${PARSE.app}`)
+    return redirect('/app')
   } catch(err){
     return { error: err as string } satisfies API_Error
   }

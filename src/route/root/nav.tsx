@@ -1,12 +1,11 @@
 import { Form, Link, Navigation } from "react-router-dom"
 import { twMerge } from "tailwind-merge"
 import { Icon } from "~/comp"
-import { PARSE } from "~/route"
 
 export const Nav = ({state, className, auth}: React.ComponentPropsWithRef<'nav'> & Pick<Navigation, 'state'> & { auth: boolean } ) => (
   <nav className="sticky top-0 z-30">
     <section aria-label="navigation bar" className={twMerge('navbar rounded-b-lg bg-base-100 shadow-lg py-6', className)}>
-      <Form id={PARSE['auth/logout']} action={`/${PARSE['auth']}/${PARSE["auth/logout"]}`} method="post" replace />
+      <Form id='logout' action='/auth/logout' method="post" replace />
       <div className="flex-1 gap-1">
         <Link className="btn glass text-xl" to="/"> <img alt='rick and morty image' src={'/R&M.svg'} className="w-8 text-sm" />  <span>R&M</span></Link>
       </div>
