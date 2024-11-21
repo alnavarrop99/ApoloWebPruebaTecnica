@@ -4,18 +4,20 @@ import './index.css'
 
 import * as route from './route'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import Main from "~/route/root/main";
+import Auth from './route/auth/route'
 
 import setup from './msw'
 
 const sys_routes = createBrowserRouter([
-  { id: 'root' satisfies keyof typeof route, path: `${route.PARSE.root}`, Component: route['root'].default, children: [
-    { id: 'landing' satisfies keyof typeof route, path: route.PARSE['landing'], loader: route['landing'].loader, Component: route.landing.default },
-    { id: 'auth' satisfies keyof typeof route, path: route.PARSE['auth'], Component: route['auth'].default, children: [
+  { id: 'auth' satisfies keyof typeof route, path: route.PARSE['auth'], element: <Main className='h-[100dvh] px-4'><Auth /></Main>, children: [
       { id: 'auth/login' satisfies keyof typeof route, path: route.PARSE['auth/login'], action: route['auth/login'].action },
       { id: 'auth/sigin' satisfies keyof typeof route, path: route.PARSE['auth/sigin'], action: route['auth/sigin'].action },
       { id: 'auth/logout' satisfies keyof typeof route, path: route.PARSE['auth/logout'], action: route['auth/logout'].action },
     ] },
-    { id: 'app' satisfies keyof typeof route, path: route.PARSE['app'], children: [
+  { id: 'root' satisfies keyof typeof route, path: route.PARSE.root, Component: route['root'].default, children: [
+    { id: 'landing' satisfies keyof typeof route, index: true, loader: route['landing'].loader, Component: route.landing.default },
+    { id: 'app' satisfies keyof typeof route, path: route.PARSE['app'], loader: route['app'].loader , children: [
       { id: 'app/$id' satisfies keyof typeof route, path: route.PARSE['app/$id'],
         Component: route['app/$id'].default,
         loader: route['app/$id'].loader 
