@@ -3,7 +3,6 @@ import * as db from "~/db";
 import { PARSE } from "~/route";
 
 export type TReq = Parameters<typeof db.login>['0']['payload']
-export type TLocalStorage = `aplo_web-${keyof API_User}`
 
 export const action = async ({ request }: ActionFunctionArgs) => {
   try{
@@ -29,7 +28,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 
     if('error' in res) return res
 
-    localStorage['aplo_web-access_token' satisfies TLocalStorage] = res.access_token
+    localStorage['aplo_web-access_token'] = res.access_token
     return redirect(`/${PARSE.app}`)
   } catch(err){
     return { error: err as string } satisfies API_Error

@@ -10,6 +10,7 @@ export const Auth = () => {
   const [visibility, setVisibility] = useState(false)
 
   const sigin_state = useMemo(() => !Object.keys(sub.data! || { value: 'not sigin' }).length, [sub])
+
   return <main aria-label='login' className='p-4'>
     <div className='card bg-gray-50 shadow-xl'>
     <div className='card-body'>
@@ -17,12 +18,14 @@ export const Auth = () => {
         <h1>Authentification:</h1>
         <Loading variant='infinity' className={clsx('text-success size-12', { 'invisible': sub.state === 'idle' })} />
       </div>
-      {sub.data && 'error' in sub.data && !('stack' in sub.data) && <div className='alert alert-error'>
+      {sub.data && 'error' in sub.data && !('stack' in sub.data) && 
+      <div className='alert alert-error animate-zoom-in'>
         <p className='text-base text-base-100'>
           {sub.data.error}
         </p>
       </div>}
-      {sigin_state && <div className='alert alert-success'>
+      {sigin_state &&
+      <div className='alert alert-success animate-zoom-in'>
         <p className='text-base text-base-100'>
           Success <b>sigin</b>, welcome again...
         </p>

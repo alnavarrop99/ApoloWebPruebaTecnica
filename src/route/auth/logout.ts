@@ -5,8 +5,9 @@ import { PARSE } from "~/route";
 export const action = async ({ }: ActionFunctionArgs) => {
   try{
     const res = await db.logout()
-
     if('error' in res) return res
+
+    localStorage.removeItem("aplo_web-access_token")
     return redirect(`${PARSE.root}`)
   } catch(err){
     return { error: err as string } satisfies API_Error
