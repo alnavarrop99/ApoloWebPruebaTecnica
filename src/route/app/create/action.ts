@@ -25,7 +25,7 @@ export const action = async ({request}: ActionFunctionArgs) => {
         .filter( (data) => data ) as Array<[string, unknown]>
     ) as TReq
 
-    const res = await db.create({ params: { category: 'character' }, payload })
+    const res = await db.create({ params: { category: 'character' }, payload, headers: { access_token: localStorage["aplo_web-access_token"] } })
 
     if('error' in res) return res
     return redirect(`${PARSE.app}/${res.id}`)

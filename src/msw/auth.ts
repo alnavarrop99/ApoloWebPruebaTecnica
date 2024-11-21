@@ -1,6 +1,26 @@
 import { delay, http, HttpResponse } from "msw";
 import * as db from "~/db";
 
+export const current = http.get<{}>(
+  `${import.meta.env.APOLO_API_URL}/auth/login`, async ({ request }) => {
+    try {
+      const localAuth = JSON.parse(localStorage.auth as unknown as string) as typeof localStorage.auth
+      const access_token = request.headers.get('Authorization') as `Bearer ${string}`
+      const data = Object.values(localAuth).find( (data) => access_token.includes(data.access_token) )
+
+      if(!data) return HttpResponse.json({ error: 'not auth' } satisfies API_Error )
+
+      return HttpResponse.json<Exclude<Awaited<ReturnType<typeof db['current']>>, API_Error>>({
+        id: data.id,
+        username: data.username
+      })
+
+    } catch(err){
+      return HttpResponse.error()
+    }
+  }
+)
+
 export const login = http.post<{}, Parameters<typeof db['login']>['0']['payload']>(
   `${import.meta.env.APOLO_API_URL}/auth/login`, async ({ request }) => {
     try {
@@ -8,8 +28,6 @@ export const login = http.post<{}, Parameters<typeof db['login']>['0']['payload'
       const req = await request.json()
       const stackError: Partial<Record<keyof typeof req, string>> = { }
       
-      await delay(1500)
-
       if(!(req.username in local)){
         stackError.username = 'user not exits'
       } else if( req.password !== local[req.username].password ) {
@@ -27,9 +45,14 @@ export const login = http.post<{}, Parameters<typeof db['login']>['0']['payload'
 )
 
 export const logout = http.post<{}, {}>(
-  `${import.meta.env.APOLO_API_URL}/auth/logout`, async () => {
+  `${import.meta.env.APOLO_API_URL}/auth/logout`, async ({ request }) => {
     try {
-      await delay(1500)
+      const local = JSON.parse(localStorage.auth as unknown as string) as typeof localStorage.auth
+      const access_token = request.headers.get('Authorization') as `Bearer ${string}`
+      const data = Object.values(local).find( (data) => access_token.includes(data.access_token) )
+
+      await delay(1000)
+      if(!data) return HttpResponse.json({ error: 'not auth' } satisfies API_Error)
       return HttpResponse.json({})
     } catch(err){
       return HttpResponse.error()
@@ -51,7 +74,7 @@ export const sigin = http.post<{}, Parameters<typeof db['sigin']>['0']['payload'
       }
 
       localStorage.auth = JSON.stringify(local) as unknown as typeof localStorage.auth
-      await delay(1500)
+      await delay(1000)
       return HttpResponse.json({})
 
     } catch(err){

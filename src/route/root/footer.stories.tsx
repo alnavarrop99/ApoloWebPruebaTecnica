@@ -8,7 +8,7 @@ const Artboard = ({ className }: Pick<React.ComponentPropsWithRef<'div'>, 'class
 const meta: Meta<typeof Footer> = {
   title: 'Page/Root/Footer',
   component: Footer,
-  decorators: withRouter(),
+  decorators: [withRouter()],
   parameters: {
     reactRouter: reactRouterParameters({
       location: {

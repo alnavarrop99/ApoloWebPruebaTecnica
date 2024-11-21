@@ -2,8 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Auth from "./route";
 import { reactRouterOutlets, reactRouterParameters, withRouter } from 'storybook-addon-remix-react-router';
 import Main from '../root/main';
-
-import { 'auth/login' as login,  'auth/logout' as sigin, app, root } from '~/route'
+import * as route from '~/route'
 
 const meta: Meta<typeof Auth> = {
   title: 'Page/Auth',
@@ -18,10 +17,8 @@ const meta: Meta<typeof Auth> = {
       },
       routing: reactRouterOutlets([
         { path: '/auth' },
-        { path: '/app', Component: app.default },
-        { path: '/root', Component: root.default },
-        { path: '/auth/login', action: login.action },
-        { path: '/auth/sigin', action: sigin.action },
+        { path: '/auth/login', action: route['auth/login'].action },
+        { path: '/auth/sigin', action: route['auth/logout'].action },
       ]) ,
     })
   }

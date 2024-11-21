@@ -4,7 +4,7 @@ import { PARSE } from "~/route";
 
 export const action = async ({ }: ActionFunctionArgs) => {
   try{
-    const res = await db.logout()
+    const res = await db.logout({ headers: { access_token: localStorage["aplo_web-access_token"] } })
     if('error' in res) return res
 
     localStorage.removeItem("aplo_web-access_token")

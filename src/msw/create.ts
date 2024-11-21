@@ -4,6 +4,13 @@ import * as db from "~/db";
 export const create = http.post<{}, Parameters<typeof db.create<'character'>>['0']['payload']>(
   `${import.meta.env.APOLO_API_URL}/character` satisfies API_Url<'character'>, async ({ request }) => {
     try{
+      const localAuth = JSON.parse(localStorage.auth as unknown as string) as typeof localStorage.auth
+      const access_token = request.headers.get('Authorization') as `Bearer ${string}`
+      const searchToken = Object.values(localAuth).find( (data) => access_token.includes(data.access_token) )
+
+      await delay(1000)
+      if(!searchToken) return HttpResponse.json({ error: 'not auth' } satisfies API_Error )
+
       const local = JSON.parse(localStorage.db as unknown as string) as typeof localStorage.db
       let index = +(Object.keys(local).sort( (a, b) => +a - +b ).at(-1) || db.MAX.CHARACTER)
       if(index < db.MAX.CHARACTER){
@@ -24,7 +31,6 @@ export const create = http.post<{}, Parameters<typeof db.create<'character'>>['0
 
       localStorage.db = JSON.stringify(local) as unknown as typeof localStorage.db
 
-      await delay(1500)
       return HttpResponse.json({ ...data, mock: 'msw active' })
     } catch(err){
       return HttpResponse.error()

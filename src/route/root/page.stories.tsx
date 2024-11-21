@@ -9,23 +9,40 @@ const meta: Meta<typeof Page> = {
   title: 'Page/Root',
   component: Page,
   decorators: [withRouter()],
+  parameters: { }
+}
+export default meta;
+
+export const Story: StoryObj<typeof meta> = {
+  name: 'Public Root',
   parameters: {
     reactRouter: reactRouterParameters({
       location: {
         path: '/',
-        pathParams: {
-          '*': 'outlet'
-        }
       },
       routing: {
-        path: '/',
+        path: '',
         children: reactRouterOutlet({
-          path: ':*', Component: Artboard
+          path: '/', Component: Artboard, index: true, 
         })
       }
     })
   }
 }
-export default meta;
+export const StoryPrivate: StoryObj<typeof meta> = {
+  name: 'Private Root',
+  parameters: {
+    reactRouter: reactRouterParameters({
+      location: {
+        path: '/private',
+      },
+      routing: {
+        path: '/',
+        children: reactRouterOutlet({
+          path: '*', Component: Artboard
+        })
+      }
+    })
+  }
 
-export const Story: StoryObj<typeof meta> = {}
+}

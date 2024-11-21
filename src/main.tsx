@@ -15,7 +15,7 @@ const sys_routes = createBrowserRouter([
       { id: 'auth/sigin' satisfies keyof typeof route, path: route.PARSE['auth/sigin'], action: route['auth/sigin'].action },
       { id: 'auth/logout' satisfies keyof typeof route, path: route.PARSE['auth/logout'], action: route['auth/logout'].action },
     ] },
-  { id: 'root' satisfies keyof typeof route, path: route.PARSE.root, Component: route['root'].default, children: [
+  { id: 'root' satisfies keyof typeof route, path: route.PARSE.root, Component: route['root'].default, loader: route['root'].loader , children: [
     { id: 'landing' satisfies keyof typeof route, index: true, loader: route['landing'].loader, Component: route.landing.default },
     { id: 'app' satisfies keyof typeof route, path: route.PARSE['app'], loader: route['app'].loader , children: [
       { id: 'app/$id' satisfies keyof typeof route, path: route.PARSE['app/$id'],

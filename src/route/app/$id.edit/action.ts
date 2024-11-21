@@ -15,7 +15,7 @@ export const action = async ({ params, request }: ActionFunctionArgs) => {
         .filter( (data) => data ) as Array<[string, unknown]>
     ) as TReq
 
-    const res = await db.edit({ params: { category: 'character', id: params.id }, payload })
+    const res = await db.edit({ params: { category: 'character', id: params.id }, payload, headers: { access_token: localStorage["aplo_web-access_token"] } })
 
     if('error' in res) return res
     return redirect(`${PARSE.app}/${res.id}`)

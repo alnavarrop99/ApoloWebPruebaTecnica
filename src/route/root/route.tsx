@@ -1,16 +1,19 @@
-import { Outlet, useLocation, useNavigation } from "react-router-dom"
+import { Outlet, useLoaderData, useNavigation } from "react-router-dom"
 import { Footer, PrivateFooter } from './footer'
 import Nav from './nav'
 import Main from './main'
-import { PARSE } from ".."
+import { loader } from './loader'
 
+export { loader }
+ 
 export const Root = () => {
+  const data = useLoaderData() as Awaited<ReturnType<typeof loader>>
   const state = useNavigation()
-  const loc = useLocation() 
+
   return <>
-    <Nav state={state.state} pathname={loc.pathname} />
+    <Nav state={state.state} auth={!('error' in data) && !!data.id} />
     <Main> <Outlet /> </Main>
-    { loc.pathname === `/${PARSE['root']}` ? <Footer /> : <PrivateFooter /> }
+    {!('error' in data) && !!data.id ? <Footer /> : <PrivateFooter /> }
   </>
 }
 

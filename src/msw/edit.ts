@@ -5,6 +5,13 @@ import { handler } from '.'
 export const edit = http.patch<Record<keyof Parameters<typeof db.edit<'character'>>['0']['params'], string>, Parameters<typeof db['edit']>['0']['payload']>(
   `${import.meta.env.APOLO_API_URL}/character` satisfies API_Url<'character'> + '/:id', async ({ params, request }) => {
     try{
+      const localAuth = JSON.parse(localStorage.auth as unknown as string) as typeof localStorage.auth
+      const access_token = request.headers.get('Authorization') as `Bearer ${string}`
+      const searchToken = Object.values(localAuth).find( (data) => access_token.includes(data.access_token) )
+
+      await delay(1000)
+      if(!searchToken) return HttpResponse.json({ error: 'not auth' } satisfies API_Error )
+
       const local = JSON.parse(localStorage.db as unknown as string) as typeof localStorage.db
       const req = await request.json()
 
@@ -20,7 +27,6 @@ export const edit = http.patch<Record<keyof Parameters<typeof db.edit<'character
 
       localStorage.db = JSON.stringify(local) as unknown as typeof localStorage.db
 
-      await delay(1500)
       return HttpResponse.json({ ...data, mock: 'msw active' })
     } catch(err){
       return HttpResponse.error()
