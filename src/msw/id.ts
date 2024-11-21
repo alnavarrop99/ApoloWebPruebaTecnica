@@ -14,6 +14,8 @@ export const id = http.get<Record<keyof Parameters<typeof db['id']>['0']['params
       const data = await res.json() as Awaited<ReturnType<typeof db.id<'character'>>>
       const local = JSON.parse(localStorage.db as unknown as string) as typeof localStorage.db
 
+      if(local?.[`${+params.id}`] === null ) return HttpResponse.json({error: 'this charecter not exits (msw)'} satisfies API_Error)
+
       return HttpResponse.json( Object.assign( local?.[`${+params.id}`] || data, { mock: 'msw active' }) )
     } catch(err){
       return HttpResponse.error()

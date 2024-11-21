@@ -5,10 +5,11 @@ import { create } from './create'
 import { edit } from './edit'
 import { id } from './id'
 import { list } from './list'
+import { remove } from './remove'
 
 export const handler = [
   login, logout, sigin, current,
-  create, edit, 
+  create, edit, remove,
   id, list
 ]
 

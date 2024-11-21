@@ -15,7 +15,10 @@ export const list = http.get<PathParams<keyof Parameters<typeof db['list']>['0']
 
       if(!('error' in data)){
         const local = JSON.parse(localStorage.db as unknown as string) as typeof localStorage.db
-        data.results = data.results.map( (data) => ( local?.[`${data.id}`] || data ) )
+        data.results = data.results.map<typeof data.results[0] | undefined>( (data) => { 
+          if( local?.[`${data.id}`] === null ) return undefined
+          return local?.[`${data.id}`] || data 
+        } ).filter((data) => data) as typeof data.results
       }
 
       return HttpResponse.json({ ...data, mock: 'msw active' })

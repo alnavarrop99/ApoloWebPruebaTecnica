@@ -20,7 +20,7 @@ export const edit = http.patch<Record<keyof Parameters<typeof db.edit<'character
         method: HttpMethods.GET,
       }))
 
-      if(!res) throw new Error('params (id) not be available')
+      if(!res || 'error' in res) return HttpResponse.json({ error: res?.error as string | undefined || 'this charecter not exits (msw)' } satisfies API_Error)
       let data = await res.json()
 
       data = local[`${+params.id}`] = Object.assign(local?.[`${+params.id}`] ?? data, req)

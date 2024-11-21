@@ -14,7 +14,7 @@ export * as 'app/list' from './app/list/route'
 export type TLocalStorage<K extends keyof API_User = 'access_token'> = `aplo_web-${K}`
 declare global {
   interface Storage extends Record<TLocalStorage<'access_token'>, string> {
-    db: Record<`${number}`, API_Response<'character', 'GET'>>
+    db: Record<`${number}`, API_Response<'character', 'GET'> | null>
     auth: Record<string, API_User>
   }
 }
