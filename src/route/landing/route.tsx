@@ -10,16 +10,16 @@ export const Landing = () => {
 
   if('error' in data) return <>Error</>
 
-  return <main aria-label="welcome page" className="place-self-center [&_p]:opacity-90 [&_:where(p,span)]:text-2xl/loose [&_p]:text-center [&_h1]:text-4xl [&_.btn]:h-full [&_.btn]:text-2xl [&_.btn]:my-3 py-16 [&_.badge]:font-bold [&_.badge]:h-10 px-4">
+  return <main aria-label="welcome page" className="place-self-center [&_p]:opacity-90 [&_:where(p,span)]:text-2xl/loose [&_p]:text-center [&_h1]:text-4xl [&_.btn]:!min-h-16 [&_.btn]:!h-full [&_.btn]:text-2xl py-16 [&_.badge]:font-bold [&_.badge]:h-10 px-4">
 
     <section aria-label="welcome" className="hero bg-base-100">
       <div className="hero-content text-center">
         <div className="max-w-full">
           <h1>Rick and Morty API</h1>
           <p className="py-6">
-            This is my little project with <span className="badge badge-success">Rick and Morty API</span>. I expect all be <b>OK</b>, for home. Enjoy this project and greeting from here. 
+            This is my little project with <span className="badge badge-info">Rick and Morty API</span>. I expect all be <b>OK</b>, for home. Enjoy this project and greeting from here. 
           </p>
-          <Link to={`/${PARSE['app']}`} className="btn glass">Get started</Link>
+          <Link to={`/${PARSE['app']}`} className="btn btn-success">Get started</Link>
         </div>
       </div>
     </section>
@@ -47,7 +47,7 @@ export const Landing = () => {
     <section aria-label="steps" className="[&_.badge]:font-bold space-y-4 bg-base-100">
       <h1 className="text-center">Steps</h1>
       <p>It's really easy to understand, all are in <span className="badge badge-warning">local storage</span>, don't worry</p>
-      <ul className="steps steps-vertical">
+      <ul className="steps steps-vertical [&_li]:after:!size-10 [&_li]:after:!text-xl [&_li]:after:!font-bold">
         <li className="step step-primary"><p><b>Welcome</b>.</p></li>
         <li className="step step-primary"><p><b>Sigin</b> | <b>Login</b>.</p></li>
         <li className="step"><p><b>Search</b> any characters</p>.</li>
