@@ -10,7 +10,8 @@ export default {
   theme: {
     extend: {
       "animation": {
-        "flip-x": "flip-x 1s ease-out"
+        "flip-x": "flip-x 1s ease-out",
+        "zoom-in": "zoom-in 0.6s ease-out"
       },
       keyframes: {
         "flip-x": {
@@ -23,7 +24,17 @@ export default {
           "100%": {
             "transform": "scaleX(1)"
           }
-}
+        },
+        "zoom-in": {
+          "0%": {
+            "opacity": "0",
+            "transform": "scale(.5)"
+          },
+          "100%": {
+            "opacity": "1",
+            "transform": "scale(1)"
+          }
+        }
       },
       transitionTimingFunction: {
         'in-out-expo': 'cubic-bezier(0.94, 0.14, 0, 0.74)'
